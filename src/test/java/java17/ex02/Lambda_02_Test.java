@@ -1,13 +1,13 @@
 package java17.ex02;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 import java17.data.Account;
 import java17.data.Data;
 import java17.data.Person;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -38,7 +38,7 @@ public class Lambda_02_Test {
 
         // TODO transformer la liste de personnes en liste de comptes
         // TODO tous les objets comptes ont un solde à 100 par défaut
-        List<Account> result = map(personList, null);
+        List<Account> result = map(personList, p -> new Account(p, 100));
 
         assert result.size() == personList.size();
         for (Account account : result) {
