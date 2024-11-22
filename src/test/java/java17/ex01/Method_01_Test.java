@@ -7,7 +7,6 @@ import org.junit.Test;
 import java17.data.Data;
 import java17.data.Person;
 
-
 /**
  * Exercice 01 - Méthode par défaut
  */
@@ -15,13 +14,16 @@ public class Method_01_Test {
 
     // tag::IDao[]
     interface IDao {
+
         List<Person> findAll();
 
-        // TODO créer une méthode int sumAge()
-        // TODO Cette méthode retourne le résultat de l'addition des ages des personnes
+        // Méthode par défaut pour calculer la somme des âges
+        default int sumAge() {
+            return findAll().stream().mapToInt(Person::getAge).sum();
+        }
     }
-    // end::IDao[]
 
+    // end::IDao[]
     class DaoA implements IDao {
 
         List<Person> people = Data.buildPersonList(20);
@@ -47,8 +49,8 @@ public class Method_01_Test {
 
         DaoA daoA = new DaoA();
 
-        // TODO invoquer la méthode sumAge pour que le test soit passant
-        int result = 0;
+        // Invocation de la méthode sumAge
+        int result = daoA.sumAge();
 
         assert result == 210;
     }
@@ -58,8 +60,8 @@ public class Method_01_Test {
 
         DaoB daoB = new DaoB();
 
-        // TODO invoquer la méthode sumAge pour que le test soit passant
-        int result = 0;
+        // Invocation de la méthode sumAge
+        int result = daoB.sumAge();
 
         assert result == 5050;
 
