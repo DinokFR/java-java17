@@ -3,7 +3,12 @@ package java17.data;
 public class Account {
 
     private Person owner;
-    private Integer balance;
+    private int balance;
+
+    public Account(Person person, int i) {
+        this.owner = person;
+        this.balance = i;
+    }
 
     public Person getOwner() {
         return owner;
